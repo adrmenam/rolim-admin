@@ -13,6 +13,7 @@ export class SidebarComponent {
   public menuItems: Menu[];
   public url: any;
   public fileurl: any;
+  public userName: any;
 
   constructor(private router: Router, public navServices: NavService) {
     this.navServices.items.subscribe(menuItems => {
@@ -36,6 +37,8 @@ export class SidebarComponent {
         }
       })
     })
+
+    this.getUser();
   }
 
   // Active Nave state
@@ -88,6 +91,10 @@ export class SidebarComponent {
     reader.onload = (_event) => {
       this.url = reader.result;
     }
+  }
+
+  getUser(){
+    this.userName = (localStorage.getItem('user'))?JSON.parse(localStorage.getItem('user'))['nombre']:'';
   }
 
 }

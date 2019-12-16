@@ -32,4 +32,8 @@ export class CreateUserComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit(){
+    console.log('Usuario creado');
+  }
+
 }

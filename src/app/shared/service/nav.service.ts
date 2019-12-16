@@ -38,7 +38,7 @@ export class NavService {
 
 	MENUITEMS: Menu[] = [
 		// {
-		// 	path: '/dashboard/default', title: 'Dashboard', icon: 'home', type: 'link', badgeType: 'primary', active: false
+		// 	path: '/''', title: 'Dashboard', icon: 'home', type: 'link', badgeType: 'primary', active: false
 		// },
 		// {
 		// 	title: 'Products', icon: 'box', type: 'sub', active: false, children: [

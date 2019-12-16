@@ -1,8 +1,8 @@
 <div class="page-wrapper">
     <div class="authentication-box">
-        <div class="container">
+        <div class="container" *ngIf="!requireOtp">
             <div class="row">
-                <div class="col-md-5 p-0 card-left">
+                <!--<div class="col-md-5 p-0 card-left">
                     <div class="card bg-primary">
                         <div class="svg-icon">
                             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
@@ -130,28 +130,28 @@
                             </owl-carousel-o>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-7 p-0 card-right">
+                </div>-->
+                <div class="col-md-12 p-0 ">
                     <div class="card tab2-card">
                         <div class="card-body">
                             <ngb-tabset class="tab-coupon mb-0">
                                 <ngb-tab>
-                                    <ng-template ngbTabTitle><i class="icon-user mr-2"></i>Login</ng-template>
+                                    <ng-template ngbTabTitle><i class="icon-user mr-2"></i>Inicio de sesión</ng-template>
                                     <ng-template ngbTabContent>
                                         <div class="tab-pane fade active show" id="account" role="tabpanel"
                                             aria-labelledby="account-tab">
-                                            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()"
+                                            <form [formGroup]="loginForm" (ngSubmit)="login()"
                                                 class="form-horizontal auth-form" novalidate="">
                                                 <div class="form-group">
-                                                    <input required="" name="login[username]" type="email"
-                                                        class="form-control" placeholder="Username"
+                                                    <input required="" name="login[email]" formControlName="email" type="email"
+                                                        class="form-control" placeholder="Email"
                                                         id="exampleInputEmail1">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input required="" name="login[password]" type="password"
-                                                        class="form-control" placeholder="Password">
+                                                    <input required="" name="login[password]" formControlName="password" type="password"
+                                                        class="form-control" placeholder="Contraseña">
                                                 </div>
-                                                <div class="form-terms">
+                                                <!-- <div class="form-terms">
                                                     <div class="custom-control custom-checkbox mr-sm-2">
                                                         <input type="checkbox" class="custom-control-input"
                                                             id="customControlAutosizing">
@@ -161,11 +161,11 @@
                                                             class="btn btn-default forgot-pass">lost your
                                                             password</a>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <div class="form-button">
-                                                    <button class="btn btn-primary" type="submit">Login</button>
+                                                    <button class="btn btn-primary" type="submit">Iniciar sesión</button>
                                                 </div>
-                                                <div class="form-footer">
+                                                <!-- <div class="form-footer">
                                                     <span>Or Login up with social platforms</span>
                                                     <ul class="social">
                                                         <li><a class="icon-facebook" href="javascript:void(0)"></a></li>
@@ -175,30 +175,30 @@
                                                         <li><a class="icon-pinterest" href="javascript:void(0)"></a>
                                                         </li>
                                                     </ul>
-                                                </div>
+                                                </div> -->
                                             </form>
                                         </div>
                                     </ng-template>
                                 </ngb-tab>
                                 <ngb-tab>
-                                    <ng-template ngbTabTitle><i class="icon-unlock mr-2"></i> Register
+                                    <ng-template ngbTabTitle><i class="icon-unlock mr-2"></i> Registro
                                         <ng-template ngbTabContent>
-                                            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()"
+                                            <form [formGroup]="registerForm" (ngSubmit)="register()"
                                                 class="form-horizontal auth-form" novalidate>
                                                 <div class="form-group">
-                                                    <input required="" name="login[username]" type="email"
-                                                        class="form-control" placeholder="Username"
+                                                    <input required="" name="login[email]" type="email"
+                                                        class="form-control" placeholder="Email"
                                                         id="exampleInputEmail12">
                                                 </div>
                                                 <div class="form-group">
                                                     <input required="" name="login[password]" type="password"
-                                                        class="form-control" placeholder="Password">
+                                                        class="form-control" placeholder="Contraseña">
                                                 </div>
                                                 <div class="form-group">
                                                     <input required="" name="login[password]" type="password"
-                                                        class="form-control" placeholder="Confirm Password">
+                                                        class="form-control" placeholder="Confirmar Contraseña">
                                                 </div>
-                                                <div class="form-terms">
+                                                <!-- <div class="form-terms">
                                                     <div class="custom-control custom-checkbox mr-sm-2">
                                                         <input type="checkbox" class="custom-control-input"
                                                             id="customControlAutosizing1">
@@ -208,11 +208,11 @@
                                                                     &amp;
                                                                     Conditions</a></span></label>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <div class="form-button">
-                                                    <button class="btn btn-primary" type="submit">Register</button>
+                                                    <button class="btn btn-primary" type="submit">Registrar</button>
                                                 </div>
-                                                <div class="form-footer">
+                                                <!-- <div class="form-footer">
                                                     <span>Or Sign up with social platforms</span>
                                                     <ul class="social">
                                                         <li><a href="javascript:void(0)"><i
@@ -224,7 +224,7 @@
                                                         <li><a href="javascript:void(0)"><i
                                                                     class="icon-pinterest"></i></a></li>
                                                     </ul>
-                                                </div>
+                                                </div> -->
                                             </form>
                                         </ng-template>
                                     </ng-template>
@@ -234,10 +234,32 @@
                     </div>
                 </div>
             </div>
-            <a [routerLink]="'/dashboard/default'" class="btn btn-primary back-btn">
+            <!-- <a [routerLink]="'/dashboard/default'" class="btn btn-primary back-btn">
                 <app-feather-icons [icon]="'arrow-left'"></app-feather-icons>
-                back
-            </a>
+                Atrás
+            </a> -->
+        </div>
+        <div class="container" *ngIf="requireOtp">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="success-text">
+                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                        <h2>Confirmación de Registro</h2>
+                        <p>Para activar su cuenta, por favor ingrese el código de confirmación enviado a su correo electrónico.</p>
+                        
+                            
+                            
+                              <form class="form-inline subscribe-form" [formGroup]="validateOtpForm">
+                                <div class="form-group mx-sm-3">
+                                  <input type="tel" formControlName="otp" name="otp" id="otp" class="form-control" placeholder="Código">
+                                </div>
+                                <button class="btn btn-solid" (click)="validateOtp()">Enviar</button>
+                              </form>
+                            
+                        
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

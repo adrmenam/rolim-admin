@@ -20,6 +20,7 @@ import { InvoiceModule } from './components/invoice/invoice.module';
 import { SettingModule } from './components/setting/setting.module';;
 import { ReportsModule } from './components/reports/reports.module';
 import { AuthModule } from './components/auth/auth.module';
+import { HttpClientModule } from '@angular/common/http'; 
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AuthModule } from './components/auth/auth.module';
     PagesModule,
     MediaModule,
     MenusModule,
-    UsersModule
+    UsersModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

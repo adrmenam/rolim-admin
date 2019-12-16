@@ -32,4 +32,12 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {  }
 
+  logout(){
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    //localStorage.removeItem("addresses");
+    
+    window.location.reload();
+  }
+
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DatatableComponent } from "@swimlane/ngx-datatable/release";
 import { orderDB } from "../../../shared/tables/order-list";
+import { Router, NavigationEnd } from '@angular/router';
+
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -11,7 +13,7 @@ export class OrdersComponent implements OnInit {
   public temp = [];
 
   @ViewChild(DatatableComponent, { static: false }) table: DatatableComponent;
-  constructor() {
+  constructor(private router: Router) {
     this.order = orderDB.list_order;
   }
 
@@ -30,6 +32,9 @@ export class OrdersComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(localStorage.getItem('token')==null){
+      this.router.navigate(['auth/login']);
+    }
   }
 
   onSelect(row) {
