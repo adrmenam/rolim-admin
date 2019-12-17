@@ -1,0 +1,25 @@
+.success-text {
+    text-align: center;
+  }
+  .success-text i {
+    font-size: 50px;
+    color: #4ead4e;
+  }
+  .success-text h2 {
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+  .success-text p {
+    font-size: 18px;
+    text-transform: capitalize;
+  }
+  .success-text p:last-child {
+    margin-bottom: 0;
+  }
+  .success-text.order-fail i {
+    color: #6d7e87;
+  }
+
+  p {
+      color: black;
+  }

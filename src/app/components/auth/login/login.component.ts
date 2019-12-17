@@ -16,11 +16,12 @@ export class LoginComponent implements OnInit {
   public validateOtpForm: FormGroup;
   public mensaje: any;
   public requireOtp: boolean = false;
+  public countries: any;
+  public country: any;
 
   constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router) {
-    this.createLoginForm();
-    this.createRegisterForm();
-    this.createOtpForm();
+    
+    
   }
 
   owlcarousel = [
@@ -51,9 +52,11 @@ export class LoginComponent implements OnInit {
   }
   createRegisterForm() {
     this.registerForm = this.formBuilder.group({
-      email: [''],
-      password: [''],
-      confirmPassword: [''],
+      email: [{ value: '', disabled: this.requireOtp }, [Validators.required, Validators.email]],
+      nombre: [{ value: '', disabled: this.requireOtp }, Validators.required],
+      password: [{ value: '', disabled: this.requireOtp }, Validators.required],
+      countrycode: ['', Validators.required],
+      tel: [{ value: '', disabled: this.requireOtp }, Validators.required]
     })
   }
   createOtpForm(){
@@ -64,6 +67,14 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit() {
+    this.createLoginForm();
+    this.createRegisterForm();
+    this.createOtpForm();
+    this.countries = [{
+      code: "+593",
+      name: "Ecuador"
+    }]
+    this.country = this.countries[0].code;
   }
 
   login(){ 
@@ -76,10 +87,10 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("token", response['token']);
         localStorage.setItem("user", JSON.stringify(response['usuario']));
         
-        this.router.navigate([''])
-        .then(() => {
-          window.location.reload();
-        });
+        this.router.navigate(['']);
+        // .then(() => {
+        //   window.location.reload();
+        // });
       }else if(response['codigoRetorno']=="0003"){
         this.requireOtp=true; 
 
@@ -114,10 +125,10 @@ export class LoginComponent implements OnInit {
   }
 
   validateOtp(){
-    
+    //console.log(this.registerForm.value);
     let obj={
-      "email": this.registerForm.value.email,
-      "password": this.registerForm.value.password,
+      "email": this.loginForm.value.email,
+      "password": this.loginForm.value.password,
       "otp": this.validateOtpForm.value.otp
     }
     console.log(obj);
@@ -137,6 +148,10 @@ export class LoginComponent implements OnInit {
         alert("Código incorrecto, el usuario no se pudo activar");
       }
      });
+  }
+
+  back(){
+    this.router.navigate(['']);
   }
 
 }

@@ -94,7 +94,11 @@ export class SidebarComponent {
   }
 
   getUser(){
-    this.userName = (localStorage.getItem('user'))?JSON.parse(localStorage.getItem('user'))['nombre']:'';
+    if(localStorage.getItem('token')==null){
+      this.router.navigate(['auth/login']);
+    }else{
+      this.userName = (localStorage.getItem('user'))?JSON.parse(localStorage.getItem('user'))['nombre']:'';
+    }
   }
 
 }

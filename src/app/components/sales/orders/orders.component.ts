@@ -32,9 +32,7 @@ export class OrdersComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(localStorage.getItem('token')==null){
-      this.router.navigate(['auth/login']);
-    }
+    
   }
 
   onSelect(row) {

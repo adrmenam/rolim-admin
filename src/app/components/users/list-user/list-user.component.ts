@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { userListDB } from 'src/app/shared/tables/list-users';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-list-user',
@@ -9,7 +10,7 @@ import { userListDB } from 'src/app/shared/tables/list-users';
 export class ListUserComponent implements OnInit {
   public user_list = []
 
-  constructor() {
+  constructor(private router: Router) {
     this.user_list = userListDB.list_user;
   }
 
@@ -38,6 +39,7 @@ export class ListUserComponent implements OnInit {
   };
 
   ngOnInit() {
+    
   }
 
 }
