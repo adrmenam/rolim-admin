@@ -91,7 +91,7 @@ export class NavService {
 		// },
 		 {
 		 	title: 'Usuarios', icon: 'user-plus', type: 'sub', active: false, children: [
-		 		{ path: '/users/list-user', title: 'Lista de usuarios', type: 'link' },
+		 		// { path: '/users/list-user', title: 'Lista de usuarios', type: 'link' },
 		 		{ path: '/users/create-user', title: 'Crear usuario', type: 'link' },
 		 	]
 		 },

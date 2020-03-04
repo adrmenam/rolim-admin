@@ -7,28 +7,30 @@
                     <h5>Gestión de órdenes</h5>
                 </div>
                 <div class="card-body">
-                    <div class="custom-datatable">
+                    <div class="custom-datatable" *ngIf="isLoaded; else stillLoading">
                         <input type='text' class="filter-ngx form-control" placeholder='Buscar...'
                             (keyup)='updateFilter($event)' />
                         <ngx-datatable class="bootstrap" [rows]="order" [columnMode]="'force'" [headerHeight]="50"
                             [footerHeight]="50" [rowHeight]="'auto'" [limit]="5">
-                            <ngx-datatable-column prop="id orden"></ngx-datatable-column>
+                            <ngx-datatable-column name = "Id Orden" prop="id_orden"></ngx-datatable-column>
+                            <ngx-datatable-column name = "Tipo" prop="tipo_pedido"></ngx-datatable-column>
                             <!-- <ngx-datatable-column name="Producto"></ngx-datatable-column> -->
                             <!-- <ngx-datatable-column prop="estado del pago"></ngx-datatable-column> -->
-                            <ngx-datatable-column prop="método de pago"></ngx-datatable-column>
-                            <ngx-datatable-column prop="estado de la orden"></ngx-datatable-column>
-                            <ngx-datatable-column name="Fecha"></ngx-datatable-column>
-                            <ngx-datatable-column name="Total"></ngx-datatable-column>
+                            <!-- <ngx-datatable-column prop="método de pago"></ngx-datatable-column> -->
+                            <ngx-datatable-column name="Estado" prop="estado_orden"></ngx-datatable-column>
+                            <ngx-datatable-column name="Fecha Creación" prop="fecha_creacion"></ngx-datatable-column>
+                            <ngx-datatable-column name="Fecha Entrega" prop="fecha_entrega"></ngx-datatable-column>
+                            <!-- <ngx-datatable-column name="Total"></ngx-datatable-column> -->
                             <ngx-datatable-column  name="Acción" prop="accion">
-                                <ng-template let-value="id orden" let-row="row" ngx-datatable-cell-template>
-                                  <span>
-                                    
-                                    <button style="background-color: rgb(22, 196, 22);" class="btn" (click)='onSelect(row)'><i class="rb-ic rb-ic-add-frame"></i>Avanzar</button>
+                                <ng-template let-value="id_orden" let-row="row" ngx-datatable-cell-template>
+                                  <span> 
+                                    <button style="background-color: rgb(142, 184, 56);" class="btn" (click)='onSelect(row)'><i class="rb-ic rb-ic-add-frame"></i>Avanzar</button>
                                   </span>
                                 </ng-template>
                               </ngx-datatable-column>
                         </ngx-datatable>
                     </div>
+                    <ng-template #stillLoading><p>Obteniendo resultados...</p></ng-template>
                 </div>
             </div>
         </div>

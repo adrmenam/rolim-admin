@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
 
   createLoginForm() {
     this.loginForm = this.formBuilder.group({
-      email: [''],
+      usuario: [''],
       password: [''],
     })
   }
@@ -101,6 +101,7 @@ export class LoginComponent implements OnInit {
         
       }
       this.mensaje=response['mensajeRetorno'];
+      alert(this.mensaje);
      });
   }
 

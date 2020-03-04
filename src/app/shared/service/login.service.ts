@@ -7,17 +7,18 @@ import 'rxjs/add/operator/map';
 })
 export class LoginService {
 
-  private baseUrl:string = "http://198.199.69.76:3000/usuarios";
+  private baseUrl:string = "http://rolimapp.com:3000/usuarios";
+  private adminLoginUrl:string = "https://rolimapp.com:3000/admin";
 
   constructor(private httpClient : HttpClient) { }
 
   public login(obj){
     let transaction = 
       {
-        "transaccion": "autenticarUsuario",
+        "transaccion": "autenticar",
         "datosUsuario": obj
       }
-    return this.httpClient.post(this.baseUrl,transaction, {
+    return this.httpClient.post(this.adminLoginUrl,transaction, {
       headers: new HttpHeaders({
            'Content-Type':  'application/json',
          })
