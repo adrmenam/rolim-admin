@@ -73,15 +73,11 @@ export class OrdersComponent implements OnInit {
     
   }
 
+  //Update order state
   onSelect(row) {
-    console.log(row);
-    //const state = this.states.filter(state=>state.desripcion==row.estado_orden);
-    const state = this.states.filter(state=>state.desripcion=="ESCANEO DE ENTRADA");
-    // console.log(this.states);
-    // console.log(state);
-    console.log("estado actual: "+state[0]['item']);
-    this.orderService.updateOrderState(row.id_orden,state[0]['item']+1,localStorage.getItem('token')).subscribe(response => {
-      console.log(response);
+    const state = this.states.findIndex(state=>state.desripcion==row.estado_orden)
+    this.orderService.updateOrderState(row.id_orden,this.states[state+1]['item'],localStorage.getItem('token')).subscribe(response => {
+      //console.log(response);
       if(response['codigoRetorno'] == "0001"){
         alert("El estado de la orden se actualizó correctamente");
         this.loadOrders();

@@ -101,7 +101,7 @@ export class LoginComponent implements OnInit {
         
       }
       this.mensaje=response['mensajeRetorno'];
-      alert(this.mensaje);
+      //alert(this.mensaje);
      });
   }
 
@@ -129,7 +129,7 @@ export class LoginComponent implements OnInit {
     //console.log(this.registerForm.value);
     let obj={
       "email": this.loginForm.value.email,
-      "password": this.loginForm.value.password,
+      //"password": this.loginForm.value.password,
       "otp": this.validateOtpForm.value.otp
     }
     console.log(obj);

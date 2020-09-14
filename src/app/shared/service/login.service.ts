@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 })
 export class LoginService {
 
-  private baseUrl:string = "http://rolimapp.com:3000/usuarios";
+  private baseUrl:string = "https://rolimapp.com:3000/usuarios";
   private adminLoginUrl:string = "https://rolimapp.com:3000/admin";
 
   constructor(private httpClient : HttpClient) { }

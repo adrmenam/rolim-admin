@@ -85,7 +85,7 @@ export class CreateUserComponent implements OnInit {
   validateOtp(){
     let obj={
       "email": this.registerForm.value.email,
-      "password": this.registerForm.value.password,
+      //"password": this.registerForm.value.password,
       "otp": this.validateOtpForm.value.otp
     }
     console.log(obj);
@@ -96,7 +96,7 @@ export class CreateUserComponent implements OnInit {
         alert('El usuario se ha creado correctamente');  
         localStorage.setItem("token", response['token']);
         localStorage.setItem("user", JSON.stringify(response['usuario']));
-        alert('Usuario '+JSON.stringify(response['usuario'])+' creado correctamente');
+        //alert('Usuario '+JSON.stringify(response['usuario'])+' creado correctamente');
       }else{
         alert("Código incorrecto, el usuario no se pudo activar");
       }
